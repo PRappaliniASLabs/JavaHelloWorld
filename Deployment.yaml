@@ -13,7 +13,7 @@ spec:
     protocol: TCP
     port: 7000
     targetPort: 7000
-    nodePort: 7000
+    nodePort: 30700
   type: NodePort
 ---
 apiVersion: apps/v1
