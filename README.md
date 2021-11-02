@@ -1,4 +1,8 @@
 # JavaHelloWorld
 
-https://leiva.io/2019/04/16/dockerizando-aplicacion-java-para-desplegar-la-en-la-nube/
+(MINIKUBE IP -->   http://192.168.49.2)
 
+
+Publica en:
+
+http://192.168.49.2:30700
