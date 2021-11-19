@@ -8,3 +8,4 @@ deployname: java-hw-deploy
 containername: java-helloworld
 containerimage: docker.io/aslabs/java-helloworld:latest
 puerto: 7000
+nodePort: 30700
