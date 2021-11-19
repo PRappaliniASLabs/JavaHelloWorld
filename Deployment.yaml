@@ -1,42 +1,51 @@
+{{- if .Values.env.config}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{.Values.appname}}
+data:
+{{.Values.env.config | toYaml | indent 2}}
+---
+{{- end}}
 apiVersion: v1
 kind: Service
 metadata:
-  name: java-hw-service
-  namespace: javahw
+  name: {{.Values.servicename}}
+  namespace: {{.Values.namespace}}
   labels:
-    app: java-hw
+    app: {{.Values.appname}}
 spec:
   selector:
-    app: java-hw
+    app: {{.Values.appname}}
   ports:
   - name: h
     protocol: TCP
-    port: 7000
-    targetPort: 7000
-    nodePort: 30700
+    port: {{.Values.puerto}}
+    targetPort: {{.Values.puerto}}
+    nodePort: {{.Values.nodePort}}
   type: NodePort
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: java-hw-deploy
-  namespace: javahw
+  name: {{.Values.deployname}}
+  namespace: {{.Values.namespace}}
   labels:
-    app: java-hw
+    app: {{.Values.appname}}
     framework: java
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: java-hw
+      app: {{.Values.appname}}
   template:
     metadata:
       labels:
-        app: java-hw
+        app: {{.Values.appname}}
         framework: java
     spec:
       containers:
-      - name: java-helloworld
-        image: docker.io/aslabs/java-helloworld:latest
+      - name: {{.Values.containername}}
+        image: {{.Values.containerimage}}
         ports:
-        - containerPort: 7000
+        - containerPort: {{.Values.puerto}}
