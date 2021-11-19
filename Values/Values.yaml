@@ -1,0 +1,11 @@
+env:
+  config:
+    CATALINA_OPTS: -Dappdynamics.agent.nodeName=$(hostname)
+servicename: java-hw-service
+namespace: javahw
+appname: java-hw
+deployname: java-hw-deploy
+containername: java-helloworld
+containerimage: docker.io/aslabs/java-helloworld:latest
+puerto: 7000
+nodePort: 30700
